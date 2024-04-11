@@ -1,0 +1,7 @@
+package/dist/cjs
+package/dist/esm
+node_modules
+test_local
+.vscode
+.DS_Store
+.npmrc

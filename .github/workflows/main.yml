@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 16.14.2
           registry-url: https://npm.pkg.github.com/
-          scope: '@tensingn'
+          scope: "@tensingn"
       - run: npm --prefix ./package install
       - run: npm --prefix ./package run build
       - run: npm publish ./package/dist

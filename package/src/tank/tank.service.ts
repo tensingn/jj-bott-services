@@ -6,7 +6,7 @@ export class TankService {
 	private readonly url =
 		"https://tank01-nfl-live-in-game-real-time-statistics-nfl.p.rapidapi.com";
 
-	constructor() {}
+	constructor(private readonly tankKey: string) {}
 
 	async getAllNFLTeams(): Promise<Array<NFLTeamTankModel>> {
 		return await this.get<Array<NFLTeamTankModel>>(`getNFLTeams`);
@@ -31,7 +31,7 @@ export class TankService {
 		const res = await axios.get<TankResponse<TResponse>>(`${this.url}/${uri}`, {
 			params,
 			headers: {
-				"X-RapidAPI-Key": "f07b28bde0msh3a50827e037928dp14760bjsna64df9735135",
+				"X-RapidAPI-Key": this.tankKey,
 				"X-RapidAPI-Host":
 					"tank01-nfl-live-in-game-real-time-statistics-nfl.p.rapidapi.com",
 			},

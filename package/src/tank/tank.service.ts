@@ -13,11 +13,11 @@ export class TankService {
 	}
 
 	async getNFLTeamSchedule(
-		teamID: string,
+		teamAbv: string,
 		season: string
 	): Promise<ScheduleTankModel> {
 		const schedule = await this.get<ScheduleTankModel>("getNFLTeamSchedule?", {
-			teamID,
+			teamAbv,
 			season,
 		});
 
@@ -37,6 +37,10 @@ export class TankService {
 			},
 		});
 
+		if (res.data.error) {
+			throw new Error(res.data.error);
+		}
+
 		return res.data.body;
 	}
 }
@@ -44,4 +48,5 @@ export class TankService {
 class TankResponse<TBody> {
 	statusCode: number;
 	body: TBody;
+	error: string;
 }

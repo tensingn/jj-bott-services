@@ -15,3 +15,10 @@ export {
 	SeasonTypeSleeperNames,
 	SeasonTypeSleeperNamesArray,
 } from "./sleeper/names/season-type.sleeper.names";
+
+// data api
+export { DataAPIService } from "./data-api/data-api.service";
+export {
+	DataAPIEntityNames,
+	DataAPIEntityNamesArray,
+} from "./data-api/names/data-api-entity.names";

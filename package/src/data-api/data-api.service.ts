@@ -13,6 +13,16 @@ export class DataAPIService {
 		return res.data;
 	}
 
+	async bulkCreate(
+		entity: DataAPIEntityNames,
+		createObjs: Array<object>
+	): Promise<void> {
+		const body = {};
+		body[entity] = createObjs;
+
+		await axios.post(`${this.url}/${entity}/bulkCreate`, body);
+	}
+
 	async findMany<TResponse>(
 		entity: DataAPIEntityNames,
 		startAfter: string = null,

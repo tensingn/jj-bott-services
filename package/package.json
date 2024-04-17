@@ -1,6 +1,6 @@
 {
   "name": "services",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Services library for Son of Botker",
   "main": "index.js",
   "files": [
@@ -23,7 +23,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@tensingn/son-of-botker-models": "^0.0.7",
+    "@tensingn/son-of-botker-models": "^0.0.8",
     "axios": "^1.6.8"
   }
 }

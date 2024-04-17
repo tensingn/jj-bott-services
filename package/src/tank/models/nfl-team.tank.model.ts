@@ -1,8 +1,7 @@
-import { GameTankModel } from "./game.tank.model";
-import { NFLTeamNames } from "@tensingn/son-of-botker-models";
+import { NFLTeamTankNames } from "../names/nfl-team.tank.names";
 
 export class NFLTeamTankModel {
-	teamAbv: NFLTeamNames;
+	teamAbv: NFLTeamTankNames;
 	teamCity: string;
 	teamName: string;
 	teamID: string;

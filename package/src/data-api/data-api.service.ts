@@ -1,14 +1,26 @@
-import axios, { Method } from "axios";
+import { GoogleAuth, IdTokenClient } from "google-auth-library";
 import { DataAPIEntityNames } from "./names/data-api-entity.names";
 
 export class DataAPIService {
+	private client: IdTokenClient;
+
 	constructor(private readonly url: string) {}
+
+	async init(): Promise<void> {
+		if (!this.client) {
+			this.client = await new GoogleAuth().getIdTokenClient(this.url);
+		}
+	}
 
 	async create<TResponse>(
 		entity: DataAPIEntityNames,
 		createObj: object
 	): Promise<TResponse> {
-		let res = await axios.post<TResponse>(`${this.url}/${entity}`, createObj);
+		let res = await this.client.request<TResponse>({
+			url: `${this.url}/${entity}`,
+			data: createObj,
+			method: "POST",
+		});
 
 		return res.data;
 	}
@@ -20,7 +32,11 @@ export class DataAPIService {
 		const body = {};
 		body[entity] = createObjs;
 
-		await axios.post(`${this.url}/${entity}/bulkCreate`, body);
+		await this.client.request({
+			url: `${this.url}/${entity}/bulkCreate`,
+			data: body,
+			method: "POST",
+		});
 	}
 
 	async findMany<TResponse>(
@@ -28,8 +44,10 @@ export class DataAPIService {
 		startAfter: string = null,
 		limit: number = 10
 	): Promise<Array<TResponse>> {
-		let res = await axios.get<Array<TResponse>>(`${this.url}/${entity}`, {
+		let res = await this.client.request<Array<TResponse>>({
+			url: `${this.url}/${entity}`,
 			params: { startAfter, limit },
+			method: "GET",
 		});
 
 		return res.data;
@@ -39,7 +57,10 @@ export class DataAPIService {
 		entity: DataAPIEntityNames,
 		id: string
 	): Promise<TResponse> {
-		let res = await axios.get<TResponse>(`${this.url}/${entity}/${id}`);
+		let res = await this.client.request<TResponse>({
+			url: `${this.url}/${entity}/${id}`,
+			method: "GET",
+		});
 
 		return res.data;
 	}
@@ -49,28 +70,41 @@ export class DataAPIService {
 		id: string,
 		updateObj: object
 	): Promise<TResponse> {
-		let res = await axios.post<TResponse>(
-			`${this.url}/${entity}/${id}`,
-			updateObj
-		);
+		let res = await this.client.request<TResponse>({
+			url: `${this.url}/${entity}/${id}`,
+			data: updateObj,
+			method: "POST",
+		});
 
 		return res.data;
 	}
 
 	async remove(entity: DataAPIEntityNames, id: string): Promise<void> {
-		await axios.delete(`${this.url}/${entity}/${id}`);
+		await this.client.request({
+			url: `${this.url}/${entity}/${id}`,
+			method: "DELETE",
+		});
 	}
 
 	async request<TResponse>(
-		method: Method,
+		method:
+			| "GET"
+			| "HEAD"
+			| "POST"
+			| "DELETE"
+			| "PUT"
+			| "CONNECT"
+			| "OPTIONS"
+			| "TRACE"
+			| "PATCH",
 		entity: DataAPIEntityNames,
 		resource: string,
 		params: object
 	): Promise<TResponse> {
-		let res = await axios.request<TResponse>({
-			method,
+		let res = await this.client.request<TResponse>({
 			url: `${this.url}/${entity}/${resource}`,
 			params,
+			method,
 		});
 
 		return res.data;

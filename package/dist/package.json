@@ -1,6 +1,6 @@
 {
     "name": "@tensingn/son-of-botker-services",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "description": "services for Son of Botker",
     "main": "cjs/index.js",
     "module": "esm/index.js",

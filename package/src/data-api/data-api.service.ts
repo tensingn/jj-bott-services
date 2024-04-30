@@ -39,6 +39,20 @@ export class DataAPIService {
 		});
 	}
 
+	async bulkUpdate(
+		entity: DataAPIEntityNames,
+		updateObjs: Array<object>
+	): Promise<void> {
+		const body = {};
+		body[entity] = updateObjs;
+
+		await this.client.request({
+			url: `${this.url}/${entity}/bulkUpdate`,
+			data: body,
+			method: "PATCH",
+		});
+	}
+
 	async findMany<TResponse>(
 		entity: DataAPIEntityNames,
 		startAfter: string = null,

@@ -1,6 +1,6 @@
 {
     "name": "@tensingn/son-of-botker-services",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "description": "services for Son of Botker",
     "main": "cjs/index.js",
     "module": "esm/index.js",
@@ -25,7 +25,7 @@
     "homepage": "https://github.com/tensingn/son-of-botker-services#readme",
     "dependencies": {
         "axios": "^1.6.8",
-        "@tensingn/son-of-botker-models": "^0.0.8",
+        "@tensingn/son-of-botker-models": "^0.0.10",
         "google-auth-library": "^9.9.0"
     }
   }

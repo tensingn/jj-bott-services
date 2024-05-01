@@ -1,6 +1,7 @@
 import { NFLTeamTankModel } from "./models/nfl-team.tank.model";
 import axios from "axios";
 import { ScheduleTankModel } from "./models/schedule.tank.model";
+import { PlayerTankModel } from "./models/player.tank.model";
 
 export class TankService {
 	private readonly url =
@@ -16,12 +17,20 @@ export class TankService {
 		teamAbv: string,
 		season: string
 	): Promise<ScheduleTankModel> {
-		const schedule = await this.get<ScheduleTankModel>("getNFLTeamSchedule?", {
+		const schedule = await this.get<ScheduleTankModel>("getNFLTeamSchedule", {
 			teamAbv,
 			season,
 		});
 
 		return schedule;
+	}
+
+	async getPlayerInformation(playerID: string): Promise<PlayerTankModel> {
+		const player = await this.get<PlayerTankModel>("getPlayerInfo", {
+			playerID,
+		});
+
+		return player;
 	}
 
 	private async get<TResponse>(

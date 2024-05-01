@@ -1,6 +1,6 @@
 {
   "name": "services",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Services library for Son of Botker",
   "main": "index.js",
   "files": [
@@ -23,7 +23,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@tensingn/son-of-botker-models": "^0.0.10",
+    "@tensingn/son-of-botker-models": "^0.0.12",
     "axios": "^1.6.8",
     "google-auth-library": "^9.9.0"
   }

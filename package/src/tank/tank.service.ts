@@ -26,7 +26,7 @@ export class TankService {
 	}
 
 	async getPlayerInformation(playerID: string): Promise<PlayerTankModel> {
-		const player = await this.get<PlayerTankModel>("getPlayerInfo", {
+		const player = await this.get<PlayerTankModel>("getNFLPlayerInfo", {
 			playerID,
 		});
 

@@ -1,6 +1,6 @@
 {
   "name": "services",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Services library for Son of Botker",
   "main": "index.js",
   "files": [

@@ -25,9 +25,13 @@ export class TankService {
 		return schedule;
 	}
 
-	async getPlayerInformation(playerID: string): Promise<PlayerTankModel> {
+	async getPlayerInformation(
+		playerID: string,
+		getStats: boolean = false
+	): Promise<PlayerTankModel> {
 		const player = await this.get<PlayerTankModel>("getNFLPlayerInfo", {
 			playerID,
+			getStats,
 		});
 
 		return player;

@@ -1,4 +1,4 @@
-import { NFLTeamNames } from "@tensingn/son-of-botker-models";
+import { NFLTeamNames } from "@tensingn/jj-bott-models";
 import { GameTankModel } from "./game.tank.model";
 
 export class ScheduleTankModel {

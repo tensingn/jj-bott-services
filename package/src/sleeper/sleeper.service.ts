@@ -1,6 +1,6 @@
 import axios from "axios";
 import { NFLStateSleeperModel } from "./models/nfl-state.sleeper.model";
-import { PlayersSleeperModel } from "@tensingn/son-of-botker-models";
+import { PlayersSleeperModel } from "@tensingn/jj-bott-models";
 
 export class SleeperService {
 	private readonly url = "https://api.sleeper.app/v1";

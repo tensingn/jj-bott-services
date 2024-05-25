@@ -1,2 +1,2 @@
-# son-of-botker-services
-common services for son of botker
+# jj-bott-services
+common services for jj bott

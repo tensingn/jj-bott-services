@@ -1,6 +1,6 @@
 {
 	"name": "services",
-	"version": "0.0.14",
+	"version": "0.0.15",
 	"description": "Services library for jj bott",
 	"main": "index.js",
 	"files": [
@@ -23,7 +23,7 @@
 		"typescript": "^5.4.5"
 	},
 	"dependencies": {
-		"@tensingn/jj-bott-models": "^0.0.13",
+		"@tensingn/jj-bott-models": "^0.0.14",
 		"axios": "^1.6.8",
 		"google-auth-library": "^9.9.0"
 	}

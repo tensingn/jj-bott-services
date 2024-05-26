@@ -2,6 +2,8 @@ import { NFLTeamTankModel } from "./models/nfl-team.tank.model";
 import axios from "axios";
 import { ScheduleTankModel } from "./models/schedule.tank.model";
 import { PlayerTankModel } from "./models/player.tank.model";
+import { GameTankModel } from "./models/game.tank.model";
+import { NFLBoxScoreOptions } from "./options/nfl-box-score.options";
 
 export class TankService {
 	private readonly url =
@@ -35,6 +37,14 @@ export class TankService {
 		});
 
 		return player;
+	}
+
+	async getNFLBoxScore(options: NFLBoxScoreOptions): Promise<GameTankModel> {
+		const game = await this.get<GameTankModel>("getNFLBoxScore", {
+			...options,
+		});
+
+		return game;
 	}
 
 	private async get<TResponse>(

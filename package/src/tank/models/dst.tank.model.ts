@@ -11,4 +11,5 @@ export class DSTTeamTankModel {
 	ydsAllowed: string;
 	fumblesRecovered: string;
 	ptsAllowed: string;
+	safeties: string;
 }

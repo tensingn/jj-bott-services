@@ -23,4 +23,6 @@ export { DataAPIService } from "./data-api/data-api.service";
 export {
 	DataAPIEntityNames,
 	DataAPIEntityNamesArray,
+	DataAPISubEntityNames,
+	DataAPISubEntityNamesArray,
 } from "./data-api/names/data-api-entity.names";

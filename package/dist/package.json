@@ -1,6 +1,6 @@
 {
 	"name": "@tensingn/jj-bott-services",
-	"version": "0.0.17",
+	"version": "0.0.18",
 	"description": "services for jj bott",
 	"main": "cjs/index.js",
 	"module": "esm/index.js",
@@ -25,7 +25,7 @@
 	"homepage": "https://github.com/tensingn/jj-bott-services#readme",
 	"dependencies": {
 		"axios": "^1.6.8",
-		"@tensingn/jj-bott-models": "^0.0.14",
+		"@tensingn/jj-bott-models": "^0.0.16",
 		"google-auth-library": "^9.9.0"
 	}
 }

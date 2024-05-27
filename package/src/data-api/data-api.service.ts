@@ -1,5 +1,8 @@
 import { GoogleAuth, IdTokenClient } from "google-auth-library";
-import { DataAPIEntityNames } from "./names/data-api-entity.names";
+import {
+	DataAPIEntityNames,
+	DataAPISubEntityNames,
+} from "./names/data-api-entity.names";
 
 export class DataAPIService {
 	private client: IdTokenClient;
@@ -25,6 +28,21 @@ export class DataAPIService {
 		return res.data;
 	}
 
+	async createSubEntity<TResponse>(
+		entity: DataAPIEntityNames,
+		entityID: string,
+		subEntity: DataAPISubEntityNames,
+		createObj: object
+	): Promise<TResponse> {
+		let res = await this.client.request<TResponse>({
+			url: `${this.url}/${entity}/${entityID}/${subEntity}`,
+			data: createObj,
+			method: "POST",
+		});
+
+		return res.data;
+	}
+
 	async bulkCreate(
 		entity: DataAPIEntityNames,
 		createObjs: Array<object>
@@ -34,6 +52,22 @@ export class DataAPIService {
 
 		await this.client.request({
 			url: `${this.url}/${entity}/bulkCreate`,
+			data: body,
+			method: "POST",
+		});
+	}
+
+	async bulkCreateSubEntity(
+		entity: DataAPIEntityNames,
+		entityID: string,
+		subEntity: DataAPISubEntityNames,
+		createObjs: Array<object>
+	) {
+		const body = {};
+		body[entity] = createObjs;
+
+		await this.client.request({
+			url: `${this.url}/${entity}/${entityID}/${subEntity}/bulkCreate`,
 			data: body,
 			method: "POST",
 		});
@@ -60,6 +94,22 @@ export class DataAPIService {
 	): Promise<Array<TResponse>> {
 		let res = await this.client.request<Array<TResponse>>({
 			url: `${this.url}/${entity}`,
+			params: { startAfter, limit },
+			method: "GET",
+		});
+
+		return res.data;
+	}
+
+	async findManySubEntities<TResponse>(
+		entity: DataAPIEntityNames,
+		entityID: string,
+		subEntity: DataAPISubEntityNames,
+		startAfter: string = null,
+		limit: number = 10
+	) {
+		let res = await this.client.request<Array<TResponse>>({
+			url: `${this.url}/${entity}/${entityID}/${subEntity}`,
 			params: { startAfter, limit },
 			method: "GET",
 		});

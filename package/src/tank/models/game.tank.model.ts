@@ -1,5 +1,6 @@
 import { SeasonTypeTankNames } from "../names/season-type.tank.names";
 import { DSTTankModel } from "./dst.tank.model";
+import { PlayerGameTankModel } from "./player-game.tank.model";
 
 export class GameTankModel {
 	gameID: string;
@@ -7,4 +8,5 @@ export class GameTankModel {
 	teamIDAway: string;
 	seasonType: SeasonTypeTankNames;
 	DST: DSTTankModel;
+	playerStats: Map<string, PlayerGameTankModel>;
 }

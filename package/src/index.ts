@@ -4,6 +4,7 @@ export { GameTankModel } from "./tank/models/game.tank.model";
 export { NFLTeamTankModel } from "./tank/models/nfl-team.tank.model";
 export { ScheduleTankModel } from "./tank/models/schedule.tank.model";
 export { DSTTankModel, DSTTeamTankModel } from "./tank/models/dst.tank.model";
+export { PlayerGameTankModel } from "./tank/models/player-game.tank.model";
 export {
 	SeasonTypeTankNames,
 	SeasonTypeTankNamesArray,

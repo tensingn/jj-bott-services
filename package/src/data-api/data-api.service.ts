@@ -64,7 +64,7 @@ export class DataAPIService {
 		createObjs: Array<object>
 	) {
 		const body = {};
-		body[entity] = createObjs;
+		body[subEntity] = createObjs;
 
 		await this.client.request({
 			url: `${this.url}/${entity}/${entityID}/${subEntity}/bulkCreate`,

@@ -5,5 +5,9 @@ export class PlayerGameTankModel extends PlayerStatsModel {
 	teamID: string;
 	playerID: string;
 	longName: string;
-	fantasyPoints: string;
+	fantasyPointsDefault: {
+		standard: string;
+		PPR: string;
+		halfPPR: string;
+	};
 }

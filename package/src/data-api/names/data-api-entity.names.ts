@@ -9,4 +9,4 @@ export const DataAPISubEntityNamesArray = ["playerGames"] as const;
 export type DataAPISubEntityNames = (typeof DataAPISubEntityNamesArray)[number];
 
 export const DataAPIActionNamesArray = ["search"] as const;
-export type DataAPIActionNames = (typeof DataAPISubEntityNamesArray)[number];
+export type DataAPIActionNames = (typeof DataAPIActionNamesArray)[number];

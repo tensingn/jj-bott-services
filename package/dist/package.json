@@ -1,6 +1,6 @@
 {
 	"name": "@tensingn/jj-bott-services",
-	"version": "0.0.23",
+	"version": "0.0.24",
 	"description": "services for jj bott",
 	"main": "cjs/index.js",
 	"module": "esm/index.js",

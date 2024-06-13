@@ -26,4 +26,6 @@ export {
 	DataAPIEntityNamesArray,
 	DataAPISubEntityNames,
 	DataAPISubEntityNamesArray,
+	DataAPIActionNames,
+	DataAPIActionNamesArray,
 } from "./data-api/names/data-api-entity.names";

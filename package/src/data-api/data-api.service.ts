@@ -1,5 +1,6 @@
 import { GoogleAuth, IdTokenClient } from "google-auth-library";
 import {
+	DataAPIActionNames,
 	DataAPIEntityNames,
 	DataAPISubEntityNames,
 } from "./names/data-api-entity.names";
@@ -148,6 +149,46 @@ export class DataAPIService {
 			url: `${this.url}/${entity}/${id}`,
 			method: "DELETE",
 		});
+	}
+
+	async performAction<TActionResult>(
+		entity: DataAPIEntityNames,
+		entityID: string = null,
+		subEntity: DataAPISubEntityNames = null,
+		action: DataAPIActionNames,
+		body: object
+	): Promise<TActionResult> {
+		let actionResult: TActionResult = null;
+
+		if (subEntity) {
+			if (entityID) {
+				let res = await this.client.request<TActionResult>({
+					url: `${this.url}/${entity}/${entityID}/${subEntity}/${action}`,
+					data: body,
+					method: "POST",
+				});
+
+				actionResult = res.data;
+			} else {
+				let res = await this.client.request<TActionResult>({
+					url: `${this.url}/${entity}/${subEntity}/${action}`,
+					data: body,
+					method: "POST",
+				});
+
+				actionResult = res.data;
+			}
+		} else {
+			let res = await this.client.request<TActionResult>({
+				url: `${this.url}/${entity}/${action}`,
+				data: body,
+				method: "POST",
+			});
+
+			actionResult = res.data;
+		}
+
+		return actionResult;
 	}
 
 	async request<TResponse>(

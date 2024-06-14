@@ -1,6 +1,6 @@
 {
 	"name": "services",
-	"version": "0.0.25",
+	"version": "0.0.26",
 	"description": "Services library for jj bott",
 	"main": "index.js",
 	"files": [

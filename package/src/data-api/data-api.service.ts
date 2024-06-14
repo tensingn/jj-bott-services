@@ -153,8 +153,8 @@ export class DataAPIService {
 
 	async performAction<TActionResult>(
 		entity: DataAPIEntityNames,
-		entityID: string = null,
-		subEntity: DataAPISubEntityNames = null,
+		entityID: string | null,
+		subEntity: DataAPISubEntityNames | null,
 		action: DataAPIActionNames,
 		body: object
 	): Promise<TActionResult> {

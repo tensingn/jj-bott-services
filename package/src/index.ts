@@ -10,6 +10,7 @@ export {
 	SeasonTypeTankNamesArray,
 } from "./tank/names/season-type.tank.names";
 export { NFLBoxScoreOptions } from "./tank/options/nfl-box-score.options";
+export { WeeklyNFLScheduleOptions } from "./tank/options/weekly-nfl-schedule.options";
 
 // sleeper
 export { SleeperService } from "./sleeper/sleeper.service";

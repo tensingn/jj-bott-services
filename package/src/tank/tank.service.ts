@@ -4,6 +4,7 @@ import { ScheduleTankModel } from "./models/schedule.tank.model";
 import { PlayerTankModel } from "./models/player.tank.model";
 import { GameTankModel } from "./models/game.tank.model";
 import { NFLBoxScoreOptions } from "./options/nfl-box-score.options";
+import { WeeklyNFLScheduleOptions } from "./options/weekly-nfl-schedule.options";
 
 export class TankService {
 	private readonly url =
@@ -45,6 +46,12 @@ export class TankService {
 		});
 
 		return game;
+	}
+
+	async getWeeklyNFLSchedule(
+		options: WeeklyNFLScheduleOptions
+	): Promise<Array<GameTankModel>> {
+		return await this.get<Array<GameTankModel>>("getNFLGamesForWeek", options);
 	}
 
 	private async get<TResponse>(

@@ -10,4 +10,5 @@ export class GameTankModel {
 	DST: DSTTankModel;
 	playerStats: Map<string, PlayerGameTankModel>;
 	gameWeek: string;
+	season: string;
 }

@@ -88,6 +88,30 @@ export class DataAPIService {
 		});
 	}
 
+	async bulkUpdateSubEntity(
+		entity: DataAPIEntityNames,
+		entityID: string | null,
+		subEntity: DataAPISubEntityNames,
+		createObjs: Array<object>
+	) {
+		const body = {};
+		body[subEntity] = createObjs;
+
+		if (entityID) {
+			await this.client.request({
+				url: `${this.url}/${entity}/${entityID}/${subEntity}/bulkUpdate`,
+				data: body,
+				method: "PATCH",
+			});
+		} else {
+			await this.client.request({
+				url: `${this.url}/${entity}/${subEntity}/bulkUpdate`,
+				data: body,
+				method: "PATCH",
+			});
+		}
+	}
+
 	async findMany<TResponse>(
 		entity: DataAPIEntityNames,
 		startAfter: string = null,

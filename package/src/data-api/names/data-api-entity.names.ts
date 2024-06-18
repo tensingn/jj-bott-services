@@ -2,6 +2,7 @@ export const DataAPIEntityNamesArray = [
 	"teams",
 	"players",
 	"nflTeams",
+	"nflGames",
 ] as const;
 export type DataAPIEntityNames = (typeof DataAPIEntityNamesArray)[number];
 

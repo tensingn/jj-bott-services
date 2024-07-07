@@ -1,9 +1,5 @@
 import { GoogleAuth, IdTokenClient } from "google-auth-library";
-import {
-	DataAPIActionNames,
-	DataAPIEntityNames,
-	DataAPISubEntityNames,
-} from "./names/data-api-entity.names";
+import { DataAPIActionNames, DataAPIEntityNames, DataAPISubEntityNames } from "./names/data-api-entity.names";
 
 export class DataAPIService {
 	private client: IdTokenClient;
@@ -16,10 +12,7 @@ export class DataAPIService {
 		}
 	}
 
-	async create<TResponse>(
-		entity: DataAPIEntityNames,
-		createObj: object
-	): Promise<TResponse> {
+	async create<TResponse>(entity: DataAPIEntityNames, createObj: object): Promise<TResponse> {
 		let res = await this.client.request<TResponse>({
 			url: `${this.url}/${entity}`,
 			data: createObj,
@@ -44,10 +37,7 @@ export class DataAPIService {
 		return res.data;
 	}
 
-	async bulkCreate(
-		entity: DataAPIEntityNames,
-		createObjs: Array<object>
-	): Promise<void> {
+	async bulkCreate(entity: DataAPIEntityNames, createObjs: Array<object>): Promise<void> {
 		const body = {};
 		body[entity] = createObjs;
 
@@ -74,10 +64,7 @@ export class DataAPIService {
 		});
 	}
 
-	async bulkUpdate(
-		entity: DataAPIEntityNames,
-		updateObjs: Array<object>
-	): Promise<void> {
+	async bulkUpdate(entity: DataAPIEntityNames, updateObjs: Array<object>): Promise<void> {
 		const body = {};
 		body[entity] = updateObjs;
 
@@ -115,11 +102,18 @@ export class DataAPIService {
 	async findMany<TResponse>(
 		entity: DataAPIEntityNames,
 		startAfter: string = null,
-		limit: number = 10
+		limit: number = 10,
+		additionalParams: {} = null
 	): Promise<Array<TResponse>> {
+		let params = { startAfter, limit };
+
+		if (additionalParams && Object.keys(additionalParams).length) {
+			params = { ...params, ...additionalParams };
+		}
+
 		let res = await this.client.request<Array<TResponse>>({
 			url: `${this.url}/${entity}`,
-			params: { startAfter, limit },
+			params,
 			method: "GET",
 		});
 
@@ -142,10 +136,7 @@ export class DataAPIService {
 		return res.data;
 	}
 
-	async findOne<TResponse>(
-		entity: DataAPIEntityNames,
-		id: string
-	): Promise<TResponse> {
+	async findOne<TResponse>(entity: DataAPIEntityNames, id: string): Promise<TResponse> {
 		let res = await this.client.request<TResponse>({
 			url: `${this.url}/${entity}/${id}`,
 			method: "GET",
@@ -154,11 +145,7 @@ export class DataAPIService {
 		return res.data;
 	}
 
-	async update<TResponse>(
-		entity: DataAPIEntityNames,
-		id: string,
-		updateObj: object
-	): Promise<TResponse> {
+	async update<TResponse>(entity: DataAPIEntityNames, id: string, updateObj: object): Promise<TResponse> {
 		let res = await this.client.request<TResponse>({
 			url: `${this.url}/${entity}/${id}`,
 			data: updateObj,
@@ -216,16 +203,7 @@ export class DataAPIService {
 	}
 
 	async request<TResponse>(
-		method:
-			| "GET"
-			| "HEAD"
-			| "POST"
-			| "DELETE"
-			| "PUT"
-			| "CONNECT"
-			| "OPTIONS"
-			| "TRACE"
-			| "PATCH",
+		method: "GET" | "HEAD" | "POST" | "DELETE" | "PUT" | "CONNECT" | "OPTIONS" | "TRACE" | "PATCH",
 		entity: DataAPIEntityNames,
 		resource: string,
 		params: object

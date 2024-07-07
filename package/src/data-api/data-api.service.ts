@@ -136,10 +136,11 @@ export class DataAPIService {
 		return res.data;
 	}
 
-	async findOne<TResponse>(entity: DataAPIEntityNames, id: string): Promise<TResponse> {
+	async findOne<TResponse>(entity: DataAPIEntityNames, id: string, additionalParams: {} = null): Promise<TResponse> {
 		let res = await this.client.request<TResponse>({
 			url: `${this.url}/${entity}/${id}`,
 			method: "GET",
+			params: additionalParams,
 		});
 
 		return res.data;
